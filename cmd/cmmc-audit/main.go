@@ -6,7 +6,6 @@
 //
 // Flags:
 //
-//	-dry-run      Generate remediation tasks without applying them (default true)
 //	-apply        Apply remediation tasks (requires elevated privileges for some checks)
 //	-output-dir   Directory for report files (default: current directory)
 //	-format       Report format: text | json | both (default: both)
