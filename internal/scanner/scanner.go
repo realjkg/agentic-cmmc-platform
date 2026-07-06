@@ -320,7 +320,7 @@ func (s *Scanner) checkEmptyPasswords(host string, at time.Time) models.Finding 
 		// Try passwd -S -a as unprivileged fallback
 		out, cmdErr := s.checker.RunCommand("passwd", "-S", "-a")
 		if cmdErr != nil {
-			return notChecked(ctrl, host, at, "cannot read /etc/shadow and passwd -S -a failed: "+err.Error())
+			return notChecked(ctrl, host, at, "cannot read /etc/shadow and passwd -S -a failed: "+cmdErr.Error())
 		}
 		sc := bufio.NewScanner(strings.NewReader(out))
 		for sc.Scan() {
