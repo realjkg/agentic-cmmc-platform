@@ -79,13 +79,7 @@ func (a *Agent) applyTask(task models.RemediationTask) models.RemediationTask {
 		return task
 	}
 
-	parts := strings.Fields(task.Command)
-	if len(parts) == 0 {
-		task.Error = "empty command"
-		return task
-	}
-
-	err := a.runner.Run(parts[0], parts[1:]...)
+	err := a.runner.Run("sh", "-c", task.Command)
 	task.AppliedAt = time.Now()
 	if err != nil {
 		task.Error = fmt.Sprintf("command '%s' failed: %v", task.Command, err)
